@@ -1,12 +1,14 @@
 ## Introduction
 
+![tentative mockup](https://dl.dropboxusercontent.com/u/10788831/Meteor%20Chat%20Assets/tentative-mockup.png)
+
 Are you tired of web applications that are complicated and frustrating to build?
 
 ![building applications](https://38.media.tumblr.com/83e639ca53047e998ed50a98d2077ba7/tumblr_mltxo7v0aE1snk1roo1_400.gif)
 
 That attract spam your mother definitely doesn't approve of?
 
-![realtime social feedback](https://38.media.tumblr.com/tumblr_mdf2i231dH1rje5o6o1_400.gif)
+![mom disapproves](https://38.media.tumblr.com/tumblr_mdf2i231dH1rje5o6o1_400.gif)
 
 Then you've come to the right place! Introducing Bloc Chat*, the do-it-yourself real time chat application built in [Meteor](https://www.meteor.com).
 
