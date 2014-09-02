@@ -4,7 +4,7 @@ Our app still looks nice, and we have some sample data that we've provided to th
 
 ### The Message Collection
 
-This is where Meteor [collections](http://docs.meteor.com/#collections) come in. Collections act differently depending on their context. On the server side, collections act as an interface to our MongoDB backend, making changes to our database in response to calls on the frontend. On the client side, a collection is a (generally) a subset of the data from our DB that is updated in real-time.
+This is where Meteor [collections](http://docs.meteor.com/#collections) come in. Collections act differently depending on their context. On the server side, collections act as an interface to our MongoDB backend, making changes to our database in response to calls on the frontend. On the client side, a collection is (generally) a subset of the data from our DB that is updated in real-time.
 
 Let's get a better idea of what this means by creating our first collection. We'll be putting it in the `collections` directory that we created earlier.
 
@@ -12,7 +12,7 @@ Let's get a better idea of what this means by creating our first collection. We'
 $ touch collections/messages.js
 ```
 
-> Code that is defined outside of the `server` and 'client' directories is accessible to both.
+> Code that is defined outside of the `server` and `client` directories is accessible to both.
 
 We'll open up our new `messages.js` file and add a single line to create our first collection.
 
@@ -57,7 +57,7 @@ We'll start by creating a file called `fixtures.js` that will hold our data that
 $ touch server/fixtures.js
 ```
 
-And we'll add our `messageData` array along with a conditional that will populate the database with a few messages if there aren't any present.
+And we'll add our `messageData` array along with a conditional statement that will populate the database with a few messages if there aren't any present.
 
 ```js(server/fixtures.js)
 var messageData = [
@@ -85,7 +85,7 @@ if (Messages.find().count() === 0) {
 }
 ```
 
-Meteor's hot code reloads should populate your template immediately, but if it doesn't for whatever reason, stop the server (using `ctrl + c`) and reset the DB. Start the server again after the reset.
+Meteor's hot code reload should populate your template immediately, but if it doesn't for whatever reason, stop the server (using `ctrl + c`) and reset the DB. Start the server again after the reset.
 
 ```bash(Terminal)
 $ meteor reset # reset the db
@@ -128,7 +128,7 @@ Inside we'll paste this markup:
 </template>
 ```
 
-And add our styling for it by updating `styles.css`:
+And we'll update `styles.css` to accommodate the new template:
 ```css(client/stylesheets/styles.css)
 /* ... */
 .message-list {
@@ -260,6 +260,6 @@ Template.newMessage.events({
 });
 ```
 
-We used a little jQuery to select the content of the textarea and get its value. With that, and a fake name, we can make an `.insert()`` call and create our messages on the submit event. If you've copied everything correctly, you should be able to post your favorite inanities in the form and see them update the `messages` data immediately!
+We used a little jQuery to select the content of the textarea and get its value. With that, and a fake name, we can make an `.insert()` call and create our messages on the submit event. If you've copied everything correctly, you should be able to post your favorite inanities in the form and see them update the `messages` data immediately!
 
 ![working meteor submit](https://dl.dropboxusercontent.com/u/10788831/Meteor%20Chat%20Assets/new_message_send.gif)
