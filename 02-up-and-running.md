@@ -1,12 +1,14 @@
-## Setting Up Our Chat App
+## Up and Running
 
 ### Installation
 
-To install Meteor, you'll want to open up your preferred command line interface. Mac users will probably use something like [Terminal](http://en.wikipedia.org/wiki/Terminal_(OS_X); Windows users should open up a new application Nitrous.io. For Mac users, you'll need to run
+To install Meteor, open your preferred command line interface. Mac users will probably use [Terminal](http://en.wikipedia.org/wiki/Terminal_(OS_X). Windows users should open a new application in Nitrous.
+
+To install Meteor for Mac users, you'll need to run:
+
 ```bash(Terminal)
 $ curl https://install.meteor.com | sh
 ```
-to get Meteor installed.
 
 ### Creating and Configuring Our App
 
@@ -16,7 +18,7 @@ Once Meteor has successfully installed, you'll be able to use the Meteor command
 $ meteor create jabberblocy
 ```
 
-You can choose your own name for your chat app, but at Bloc, we believe in terrible plays-on-words, so we've named ours JabberBlocy (we'll also be referring to the app by that name for the rest of the tutorial, so if you've chosen a different name, keep that in mind). Check to make sure the app creation went through properly by running `ls <app name>` in your current directory. You should see three files, all with an eponymous name to your app.
+You can choose your own name for your chat app, but at Bloc, we believe in terrible play-on-words. In that spirit we've named ours JabberBlocy. We'll also be referring to the app by that name for the rest of the tutorial, so if you've chosen a different name, keep that in mind. Check to make sure the app was created properly by running `ls <app name>` in your current directory. You should see three files, all with an eponymous name to your app.
 
 ```bash
 jabberblocy.css
@@ -24,7 +26,7 @@ jabberblocy.html
 jabberblocy.js
 ```
 
-We're going to delete the files now so we can re-structure our app using some of Meteor's conventions for app configuration.
+Let's delete the files now so we can re-structure our app using some of Meteor's conventions for app configuration.
 
 ```bash(Terminal)
 $ rm -rf jabberblocy.{js,html,css}
@@ -32,27 +34,28 @@ $ rm -rf jabberblocy.{js,html,css}
 
 #### The Standard App Directory Structure
 
-Meteor has some strong conventions about how to structure your app. Let's create the five standard Meteor app directories.
+Meteor has strong opinions about how to structure your app. Let's create the five standard Meteor app directories.
+
 ```bash(Terminal)
 $ mkdir -p lib/ server/ client/ collections/ public/
 ```
 
-What files you choose to put in these directories affects where they're processed (server or client side) and when they're loaded by the app. If you're into guessing, you might has pre-supposed that code in `client` is meant for the client only, and `server` is meant for the server only. And you'd be right.
+What files you choose to put in these directories affects where they're processed (server or client side) and when they're loaded by the app. If you're into guessing, you might have pre-supposed that code in `client` is meant for the client only, and `server` is meant for the server only. And you'd be right.
 
 Code in `lib` is loaded before any other code in the app. Static assets go in the `public` directory. We'll go deeper into what `collections` are later.
 
 ### Creating Our First Views
-
-We're going to create our first views in the `client` directory. We'll create a `views` subdirectory, and add two files: `main.html` and `main.js`.
+Let's create our first views in the `client` directory. We'll create a `views` subdirectory, and add two files: `main.html` and `main.js`.
 
 ```bash(Terminal)
 $ mkdir client/views
 $ touch client/views/main.html
 $ touch client/views/main.js
 ```
-> Note that Meteor loads any files with `main.*` last.
 
-Meteor follows a convention of placing JavaScript and HTML files related to a particular view component (i.e. a part of the app distinguised by its use or feature) in the same place.
+> Note that Meteor loads any files with `main.*`, last.
+
+Meteor follows a convention of placing JavaScript and HTML files related to a particular view component (i.e. a part of the app distinguished by its use or feature) in the same place.
 
 Use your favorite text editor to open up `main.html`, and let's add our first markup:
 
@@ -75,13 +78,15 @@ Use your favorite text editor to open up `main.html`, and let's add our first ma
 
 A couple of things to note: we're using the ever-useful (and [recently retired](http://yahooeng.tumblr.com/post/96098168666/important-announcement-regarding-yui)) [YUI Reset Styles](http://yuilibrary.com/yui/docs/cssreset/) to clear any pre-packaged browser styling. We'll also be using the open-source [ionicons](http://ionicons.com/) icon library to add a little visual flavor to our app. Finally, we'll be including the [Open Sans Typeface](https://www.google.com/fonts/specimen/Open+Sans) to give us a slick sans-serif font.
 
-For styling, we'll want to create a separate `stylesheets` directory in `client`, and within that directory, let's create `styles.css`.
+For styling, we'll want to create a separate `stylesheets` directory in `client`, and within that directory, we'll create `styles.css`.
+
 ```bash(Terminal)
 $ mkdir client/stylesheets
 $ touch client/stylesheets/styles.css
 ```
 
-Then let's add our first style properties to our new `styles.css`.
+Next, let's add our first style properties to our new `styles.css`.
+
 ```css(client/stylesheets/styles.css)
 .sidebar {
   width: 20%;
@@ -136,7 +141,10 @@ You should see some output like:
 => App running at: http://localhost:3000/
 ```
 
-Navigate to [localhost:3000](http://localhost:3000/) and you should see the beginning nuggets of our app.
+Navigate to [localhost:3000](http://localhost:3000/) and you should see the beginning  of our app.
+
 ![empty home page](https://dl.dropboxusercontent.com/u/10788831/Meteor%20Chat%20Assets/beginning_home_page.png)
 
-Daaaaaamn (is probably what you're thinking). Hold that "a" a little longer - we've got some more goodies coming up.
+To stop the Meteor server, just press control-C in your Terminal.
+
+Daaaaaayuummmm (is probably what you're thinking). Hold that "a" a little longer - we've got some more goodies coming up.
