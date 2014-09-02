@@ -158,12 +158,17 @@ To bring the look our templates up-to-date with the app, we'll be adding some st
 }
 +
 +.message-list {
++  position: absolute;
++  top: 70px;
 +  width: 100%;
++  overflow-y: scroll;
 +  padding-right: 36px;
 +  padding-left: 36px;
++  box-sizing: border-box;
 +}
 +
 +.message-item {
++  position: relative;
 +  width: 100%;
 +  border-bottom: 1px solid rgb(227,229,232);
 +}

@@ -106,6 +106,7 @@ Then let's add our first style properties to our new `styles.css`.
   right: 0;
   bottom: 0;
   position: absolute;
+  box-sizing: border-box;
   background-color: rgb(242,243,247);
 }
 
