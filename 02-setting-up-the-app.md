@@ -3,6 +3,7 @@
 ### Installation
 
 To install Meteor, you'll want to open up your preferred command line interface. Mac users will probably use something like [Terminal](http://en.wikipedia.org/wiki/Terminal_(OS_X); Windows users should open up a new application Nitrous.io. For Mac users, you'll need to run
+
 ```bash(Terminal)
 $ curl https://install.meteor.com | sh
 ```
