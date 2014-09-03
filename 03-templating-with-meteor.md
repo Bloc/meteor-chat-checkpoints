@@ -2,11 +2,11 @@
 
 ![finished product](https://dl.dropboxusercontent.com/u/10788831/Meteor%20Chat%20Assets/finished_screenshot_03_without_submit.png)
 
-Let's start dividing our markup into templates. Meteor has its own templating system called [Spacebars](https://github.com/meteor/meteor/blob/devel/packages/spacebars/README.md) (inspired by [Handlebars](http://handlebarsjs.com/)) that we'll be using to insert our different blocks of HTML.
+Let's start dividing our markup into templates. Meteor has its own templating system named [Spacebars](https://github.com/meteor/meteor/blob/devel/packages/spacebars/README.md). Spacebars is inspired by [Handlebars](http://handlebarsjs.com/) and we'll be using it to insert dynamic content into our HTML.
 
 ### Restructuring Our Views
 
-Let's start by creating a new `views` directory called `application` where we'll be putting our templates that will persist throughout all components of the chat app.
+Let's start by creating a new `views` directory called `application` where we'll put our templates that will persist throughout all components of Jabberblocy.
 
 ```bash(Terminal)
 $ mkdir client/views/application
@@ -47,13 +47,13 @@ Notice that we've wrapped our HTML in a special `<template>` tag. The `name` att
 </body>
 ```
 
-Spacebars uses double curly braces to signify that some kind of Spacebars logic will be populated in this part of the template. In this case, the greater than (`>`) symbol is Spacebar's way of denoting that we want to insert a partial here. Notice that the name following the `>` is identical to our `name` attribute on the `<template>` tag. This is how Spacebars knows which template to insert where.
+Spacebars uses double curly braces to signify that some kind of Spacebars logic will be populated in this part of the template. In this case, the greater than (`>`) symbol is Spacebar's way of denoting that we want to insert a partial here. Notice that the name following the `>` is identical to our `name` attribute on the `<template>` tag. This is how Spacebars knows which template to insert.
 
 ### Creating More Templates
 
-Now that we know how partials work, we can start creating some more templates to be included as partials in our existing templates. The first we'll create is a template called `messageList` that will hold the markup for the messages in our chatroom.
+Now that we know how partials work, we can start creating more templates to be included as partials in our existing templates. The first we'll create is a template named `messageList` that will hold the markup for the messages in our chatroom.
 
-Let's create a `messages` directory in our views where we'll hold all of our message-related partials and put our first template file in it, called `message_list.html`.
+Let's create a `messages` directory in our `views` directory where we'll hold all of our message-related partials. We'll also put our first template file in it, named `message_list.html`.
 
 ```bash(Terminal)
 $ mkdir client/views/messages
@@ -86,11 +86,11 @@ We'll fill the `messageList` template with our necessary markup, and include a n
 </template>
 ```
 
-The `{{#each}}` block helper in this template will allow us to insert a partial called `messageItem` for every element in the array of data called `messages`. Where does that `messages` data come from, and how can we associate with the message list template? For that, we have Spacebar's [template helpers](http://docs.meteor.com/#template_helpers).
+The `{{#each}}` block helper in this template will allow us to insert a partial named `messageItem` for every element in the `messages` array. Where does that `messages` data come from, and how can we associate it with the message list template? For that, we have Spacebar's [template helpers](http://docs.meteor.com/#template_helpers).
 
 #### Template Managers and Helpers
 
-Meteor likes to keep its JavaScript logic separate from its templates. Template helper definitions allow us to maintain that separation. The convention in Meteor is to name the JavaScript file eponymously with the template that it is managing. Let's create the file that will hold our helper logic and manage our data for us.
+Meteor likes to keep its JavaScript logic separate from its templates. Template helper definitions allow us to maintain that separation. The convention in Meteor is to name the JavaScript file similarly to the template that it is managing. Let's create the file that will hold our helper logic and manage our data for us.
 
 ```bash(Terminal)
 $ touch client/views/messages/message_list.js
@@ -121,7 +121,7 @@ Template.messageList.helpers({
 
 >Notice that when we call the `helpers` method on the `Template`, we use the middle part to identify the precise name of the template we want the helper to work with.
 
-If you've dealt with an [MVVM framework](http://en.wikipedia.org/wiki/Model_View_ViewModel) like Angular before, you might be thinking that this behavior looks consistent with that of a controller. Template helpers are similar, but generally only act as a place to hold data that the templates can act on. Other logic that might be held in a controller is defined elsewhere in Meteor (we'll get into that in a bit).
+If you've dealt with an [MVVM framework](http://en.wikipedia.org/wiki/Model_View_ViewModel) like Angular before, you might be thinking that this behavior looks consistent with that of a controller. Template helpers are similar, but generally only act as a place to hold data that the templates can act on. Other logic that might be held in a controller is defined elsewhere in Meteor -- we'll get into that in a bit.
 
 Now that we have data that we can use to populate our individual messages with, we can create our `messageItem` partial that we referenced in the `{{#each}}` block helper in `message_list.html`. We'll call the file that holds the template `message_item.html` and put it in our `messages` directory with the other message views.
 
@@ -129,7 +129,7 @@ Now that we have data that we can use to populate our individual messages with, 
 $ touch client/views/messages/message_item.html
 ```
 
-And we'll add our markup
+And we'll add our markup:
 
 ```HTML(client/views/messages/message_item.html)
 <template name="messageItem">
@@ -142,20 +142,20 @@ And we'll add our markup
 </template>
 ```
 
-Notice that the properties of the objects in our `messageData` array are accessible in the `messageItem` template. This is because the template is included in the scope of the `{{#each}}` block, so every individual template is passed the object that corresponds to its instance. Meteor treats the template like a wrapper object for the data, which makes it accessible simply by property name within the template (no need to prepend `messageItem` to them).
+Notice that the properties of the objects in our `messageData` array are accessible in the `messageItem` template. This is because the template is included in the scope of the `{{#each}}` block, so every individual template is passed the object that corresponds to its instance. Meteor treats the template like a wrapper object for the data, which makes it accessible simply by property name within the template. Therefore there is no need to prepend `messageItem` to it.
 
 ### Styling
 
-To bring the look our templates up-to-date with the app, we'll be adding some styling to `style.css`.
+To bring the look of our templates up-to-date with the app, let's add some styling to `style.css`.
 
 ```css(client/stylesheets/styles.css)
 /* ... */
-.main-container .main-header {
-  background-color: white;
-  padding: 24px;
-  font-family: "Open Sans";
-  color: rgb(157,158,164);
-}
+ .main-container .main-header {
+   background-color: white;
+   padding: 24px;
+   font-family: "Open Sans";
+   color: rgb(157,158,164);
+ }
 +
 +.message-list {
 +  position: absolute;
@@ -190,4 +190,4 @@ To bring the look our templates up-to-date with the app, we'll be adding some st
 +}
 ```
 
-If you aren't running your app already, do so by executing `meteor` in the project's root directory and make sure you see something like the screenshot at the top.
+If you aren't running your app already, do so by executing `meteor` in the project's root directory and make sure your app looks like the screenshot in the beginning of this chapter. Also, you may want to keep two Terminal windows open from now on - one to keep the Meteor server running, and one to manage your app's directory structure.
